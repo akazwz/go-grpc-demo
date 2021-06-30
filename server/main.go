@@ -16,7 +16,12 @@ type server struct {
 
 func (s *server) SayHello(_ context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	log.Printf("Received: %v", in.GetName())
-	return &pb.HelloReply{Message: "Hello" + in.GetName()}, nil
+	return &pb.HelloReply{Message: "Hello! " + in.GetName()}, nil
+}
+
+func (s *server) SayHelloAgain(_ context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	log.Printf("Received Again: %v", in.GetName())
+	return &pb.HelloReply{Message: "Hello Again! " + in.GetName()}, nil
 }
 
 func main() {
